@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="30dp"
+        android:paddingTop="40dp">
+        
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="1"
+            android:rowCount="1">
+
+            <ImageView android:src="@drawable/logo"
+                android:layout_columnWeight="1"
+                android:layout_height="150dp"
+                android:layout_width="150dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="30dp"/>
+
+        </GridLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Selamat datang!"
+            android:textStyle="italic|bold"
+            android:textSize="26dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="silahkan login."
+            android:textStyle="italic"
+            android:textSize="20dp"/>
+    
+        <EditText
+            android:id="@+id/usernameET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="username kamu"
+            android:paddingVertical="20dp"
+            android:layout_marginTop="10dp"
+            android:paddingHorizontal="15dp"/>
+
+        <EditText
+            android:id="@+id/passwordET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="password kamu"
+            android:paddingVertical="20dp"
+            android:paddingHorizontal="15dp"
+            android:inputType="textPassword"/>
+        
+        <GridLayout
+            android:layout_width="match_parent"
+            android:columnCount="2"
+            android:rowCount="1"
+            android:layout_height="match_parent">
+            <Button
+                android:id="@+id/btn_regis"
+                android:text="daftar ?"
+                android:textAllCaps="false"
+                android:width="140dp"
+                android:textColor="@color/biru"
+                android:background="@android:color/transparent"/>
+
+            <Button
+                android:id="@+id/btn_login"
+                android:text="Masuk"
+                android:layout_gravity="fill_horizontal"
+                android:textAllCaps="false"
+                android:shadowRadius="5"
+                style="?android:attr/borderlessButtonStyle"
+                android:background="@drawable/btn_default"/>
+        </GridLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="bottom">
+        <TextView
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Atau bisa pakai akun sosmedmu"
+            android:textSize="18dp"
+            android:textStyle="normal"
+            android:gravity="center"/>
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/kuning"
+            android:columnCount="2"
+            android:rowCount="1"
+            android:layout_gravity="center"
+            android:paddingVertical="40dp">
+
+            <GridLayout
+                android:text="Facebook"
+                android:layout_height="wrap_content"
+                android:paddingVertical="7.5dp"
+                android:minWidth="160dp"
+                android:layout_columnWeight="1"
+                android:paddingHorizontal="16dp"
+                android:layout_gravity="center_horizontal|right"
+                android:layout_marginRight="7.5dp"
+                android:background="@drawable/btn_white">
+
+                <ImageView
+                    android:src="@drawable/facebook"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:text="FACEBOOK"
+                    android:textStyle="bold"
+                    android:textColor="@color/abu2"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"/>
+
+            </GridLayout>
+
+            <GridLayout
+                android:text="Facebook"
+                android:layout_height="wrap_content"
+                android:paddingVertical="7.5dp"
+                android:layout_columnWeight="1"
+                android:minWidth="160dp"
+                android:paddingHorizontal="16dp"
+                android:layout_gravity="center_horizontal|left"
+                android:layout_marginLeft="7.5dp"
+                android:background="@drawable/btn_white">
+
+                <ImageView
+                    android:src="@drawable/ic_g"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"/>
+                <TextView
+                    android:text="GOOGLE"
+                    android:textStyle="bold"
+                    android:textColor="@color/abu2"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp" />
+
+            </GridLayout>
+        </GridLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

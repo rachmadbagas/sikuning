@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#DDDDDD</color>
+    <color name="colorAccent">#FFF151</color>
+    <color name="kuning">#FFF151</color>
+    <color name="abu2">#7D7D7D</color>
+    <color name="abu2_menu">#767676BB</color>
+    <color name="biru">#387AFF</color>
+    <color name="gorange">#F7A80B</color>
+    <color name="gkuning">#F6FF00</color>
+    <color name="facebook">#5D8FD1</color>
+    <color name="white">#FFF</color>
+</resources>
