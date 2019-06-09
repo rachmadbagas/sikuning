@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_weight="1"
+    tools:context=".footerFrag">
+
+
+        <TextView
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Atau bisa pakai akun sosmedmu"
+            android:textSize="18dp"
+            android:textStyle="normal"
+            android:gravity="center"/>
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/kuning"
+            android:columnCount="2"
+            android:rowCount="1"
+            android:layout_gravity="center"
+            android:paddingVertical="40dp">
+
+            <GridLayout
+                android:text="Facebook"
+                android:layout_height="wrap_content"
+                android:paddingVertical="7.5dp"
+                android:minWidth="160dp"
+                android:layout_columnWeight="1"
+                android:paddingHorizontal="16dp"
+                android:layout_gravity="center_horizontal|right"
+                android:layout_marginRight="7.5dp"
+                android:background="@drawable/btn_white">
+
+                <ImageView
+                    android:src="@drawable/facebook"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:text="FACEBOOK"
+                    android:textStyle="bold"
+                    android:textColor="@color/abu2"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"/>
+
+            </GridLayout>
+
+            <GridLayout
+                android:text="Facebook"
+                android:layout_height="wrap_content"
+                android:paddingVertical="7.5dp"
+                android:layout_columnWeight="1"
+                android:minWidth="160dp"
+                android:paddingHorizontal="16dp"
+                android:layout_gravity="center_horizontal|left"
+                android:layout_marginLeft="7.5dp"
+                android:background="@drawable/btn_white">
+
+                <ImageView
+                    android:src="@drawable/ic_g"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"/>
+                <TextView
+                    android:text="GOOGLE"
+                    android:textStyle="bold"
+                    android:textColor="@color/abu2"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp" />
+
+            </GridLayout>
+        </GridLayout>
+    </LinearLayout>
