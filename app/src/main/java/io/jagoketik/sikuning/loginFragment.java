@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 
-public class loginFragment extends Fragment implements View.OnClickListener {
+public class loginFragment extends Fragment{
     private Button daftar, masuk;
     private EditText username, password;
 
@@ -22,21 +22,25 @@ public class loginFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_login, container, false);
-        daftar = (Button) v.findViewById(R.id.daftarBtn);
+        daftar = (Button) v.findViewById(R.id.btn_regis);
+        daftar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent as = new Intent(getActivity(),RegisterActivity.class);
+                startActivity(as);
+            }
+        });
         masuk = (Button) v.findViewById(R.id.btn_login);
+        masuk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
         return v;
     }
 
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.daftarBtn:
-                Intent intent = (Intent) new Intent(getActivity(), RegisterActivity.class);
-                startActivity(intent);
-                break;
-            default:
-                break;
-        }
-    }
+
 }
