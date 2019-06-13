@@ -11,7 +11,8 @@ public class MainMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-//        getSupportFragmentManager().beginTransaction()
-//                .commit();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.menuPanel,new main_usernameFrag())
+                .commit();
     }
 }
