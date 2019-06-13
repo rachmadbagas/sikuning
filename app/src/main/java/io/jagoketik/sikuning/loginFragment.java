@@ -34,7 +34,8 @@ public class loginFragment extends Fragment{
         masuk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent as = new Intent(getActivity(),MainMenuActivity.class);
+                startActivity(as);
             }
         });
 
