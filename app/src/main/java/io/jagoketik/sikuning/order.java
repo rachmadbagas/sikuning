@@ -9,5 +9,10 @@ public class order extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
+
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.order_panel,new angkot_sekitar())
+                .commit();
     }
+
 }
