@@ -6,26 +6,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:paddingHorizontal="30dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingHorizontal="30dp"
-        android:paddingBottom="20dp">
-
+        <EditText
+            android:id="@+id/nameET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="nama lengkap kamu"
+            android:paddingVertical="20dp"
+            android:layout_marginTop="10dp"
+            android:paddingHorizontal="15dp"/>
 
 
 
         <EditText
-            android:id="@+id/usernameET"
+            android:id="@+id/emailET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="username kamu"
+            android:hint="email kamu"
             android:paddingVertical="20dp"
-            android:layout_marginTop="10dp"
-            android:paddingHorizontal="15dp"/>
+            android:paddingHorizontal="15dp"
+            android:inputType="text"/>
+
+        <EditText
+            android:id="@+id/alamatET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="alamat kamu"
+            android:paddingVertical="20dp"
+            android:paddingHorizontal="15dp"
+            android:inputType="text"/>
+
+        <EditText
+            android:id="@+id/hpET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="nomor hp kamu"
+            android:paddingVertical="20dp"
+            android:paddingHorizontal="15dp"
+            android:inputType="number"/>
 
         <EditText
             android:id="@+id/passwordET"
@@ -57,6 +77,3 @@
 
     </LinearLayout>
 
-
-
-</LinearLayout>
