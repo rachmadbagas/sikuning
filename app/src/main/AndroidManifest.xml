@@ -34,13 +34,13 @@
         <activity android:name=".order" />
         <activity
             android:name=".MainMenuActivity"
-            android:theme="@style/AppThemeNo" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".RegisterActivity"
-            android:theme="@style/AppThemeNo" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/AppThemeNo">
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
