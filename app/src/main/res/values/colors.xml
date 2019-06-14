@@ -12,4 +12,8 @@
     <color name="gkuning">#F6FF00</color>
     <color name="facebook">#5D8FD1</color>
     <color name="white">#FFF</color>
+    <color name="panel">#80FFFFFF</color>
+    <color name="panel2">#C0C0C0</color>
+    <color name="blue_button">#387AFF</color>
 </resources>
+

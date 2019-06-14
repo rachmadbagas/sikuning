@@ -47,14 +47,18 @@
             android:layout_width="match_parent"
             android:columnCount="2"
             android:rowCount="1"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp">
+
             <Button
                 android:id="@+id/btn_regis"
+                android:layout_width="wrap_content"
+                android:layout_height="58dp"
+                android:width="140dp"
+                android:background="@android:color/transparent"
                 android:text="daftar ?"
                 android:textAllCaps="false"
-                android:width="140dp"
-                android:textColor="@color/biru"
-                android:background="@android:color/transparent"/>
+                android:textColor="@color/biru" />
 
             <Button
                 android:id="@+id/btn_login"

@@ -25,6 +25,8 @@ public class LoginActivity extends AppCompatActivity {
                 .add(R.id.loginContainer,new footerFrag())
                 .commit();
 
+
     }
+
 
 }
