@@ -1,6 +1,7 @@
 package io.jagoketik.sikuning;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -53,6 +54,8 @@ public class registrationFrag extends Fragment {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                         Toast.makeText(getContext(),"Berhasil",Toast.LENGTH_SHORT).show();
+                        Intent as = new Intent(getActivity(),LoginActivity.class);
+                        startActivity(as);
                     }
 
                     @Override
