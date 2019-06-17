@@ -9,6 +9,46 @@
     tools:context=".LoginActivity"
     android:paddingHorizontal="30dp">
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="30dp"
+            android:paddingTop="40dp">
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="1"
+                    android:rowCount="1">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_columnWeight="1"
+                            android:layout_gravity="left"
+                            android:layout_marginBottom="30dp"
+                            android:src="@drawable/logo" />
+
+                </GridLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Daftar Sekarang!"
+                    android:textSize="26dp"
+                    android:textStyle="italic|bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="daftar sebagai pengguna baru"
+                    android:textSize="20dp"
+                    android:textStyle="italic" />
+
+
+        </LinearLayout>
         <EditText
             android:id="@+id/nameET"
             android:layout_width="match_parent"
@@ -75,6 +115,11 @@
             android:background="@drawable/btn_default"
             android:shadowRadius="5"
             style="?android:attr/borderlessButtonStyle"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"/>
 
     </LinearLayout>
 

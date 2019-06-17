@@ -1,81 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/regisContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".LoginActivity"
-    android:id="@+id/regisContainer">
+    tools:context=".LoginActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingHorizontal="30dp"
-        android:paddingTop="40dp">
 
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnCount="1"
-            android:rowCount="1">
-
-            <ImageView android:src="@drawable/logo"
-                android:layout_columnWeight="1"
-                android:layout_height="100dp"
-                android:layout_width="100dp"
-                android:layout_gravity="left"
-                android:layout_marginBottom="30dp"/>
-
-        </GridLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Daftar Sekarang!"
-            android:textStyle="italic|bold"
-            android:textSize="26dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="daftar sebagai pengguna baru"
-            android:textStyle="italic"
-            android:textSize="20dp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
+    <ScrollView
         android:id="@+id/fragment1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:layout_height="match_parent">
 
-    </LinearLayout>
-    <LinearLayout
+    </ScrollView>
+
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="bottom">
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:background="@color/kuning">
 
-        <GridLayout
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/kuning"
-            android:columnCount="2"
-            android:rowCount="1"
-            android:layout_gravity="center"
-            android:paddingVertical="40dp"
-            android:paddingHorizontal="20dp">
+            android:layout_height="match_parent"
+            android:layout_columnSpan="2"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="20dp"
+            android:gravity="center"
+            android:text="Bergabung Bersama kami sekarang juga, dan buat angkutan umum jaya kembali bersama kami"
+            android:textSize="16dp" />
 
-            <TextView
-                android:textSize="16dp"
-                android:text="Bergabung Bersama kami sekarang juga, dan buat angkutan umum jaya kembali bersama kami"
-                android:layout_columnSpan="2" android:gravity="center"/>
+    </RelativeLayout>
 
-        </GridLayout>
-    </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

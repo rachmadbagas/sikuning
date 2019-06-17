@@ -3,7 +3,6 @@
     package="io.jagoketik.sikuning">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
@@ -13,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".info_angkot"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -28,18 +27,20 @@
 
         <activity
             android:name=".order_alternate"
-            android:label="@string/title_activity_order_alternate">
-
-        </activity>
+            android:label="@string/title_activity_order_alternate"
+            android:screenOrientation="portrait"></activity>
         <activity android:name=".order" />
         <activity
             android:name=".MainMenuActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".RegisterActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".LoginActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
