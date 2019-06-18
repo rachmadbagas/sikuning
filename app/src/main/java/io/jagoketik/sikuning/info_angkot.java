@@ -1,8 +1,5 @@
 package io.jagoketik.sikuning;
 
-import android.content.Context;
-import android.media.Image;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +11,9 @@ import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.jagoketik.sikuning.adapter.angkotAdapter;
+import io.jagoketik.sikuning.model.angkot;
 
 public class info_angkot extends Fragment {
 private ImageView back;

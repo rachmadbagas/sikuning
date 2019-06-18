@@ -1,4 +1,4 @@
-package io.jagoketik.sikuning;
+package io.jagoketik.sikuning.model;
 
 public class angkot {
     private String jenisAngkot;

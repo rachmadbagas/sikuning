@@ -1,4 +1,4 @@
-package io.jagoketik.sikuning;
+package io.jagoketik.sikuning.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.List;
+
+import io.jagoketik.sikuning.R;
+import io.jagoketik.sikuning.model.angkot;
 
 public class angkotAdapter extends RecyclerView.Adapter<angkotAdapter.angkotViewHolder>{
 
