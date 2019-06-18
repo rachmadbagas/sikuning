@@ -1,4 +1,4 @@
-package io.jagoketik.sikuning;
+package io.jagoketik.sikuning.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.jagoketik.sikuning.R;
 import io.jagoketik.sikuning.adapter.angkotAdapter;
 import io.jagoketik.sikuning.model.angkot;
 
@@ -38,18 +39,15 @@ List<angkot> angkotList;
                         .commit();
             }
         });
+
         angkotList = new ArrayList<>();
         rv = (RecyclerView) v.findViewById(R.id.angkotItem);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+
         angkotList.add(
                 new angkot(
-                        "A"
-                )
-        );
-        angkotList.add(
-                new angkot(
-                        "B"
+                        "A", new String[]{"F"}
                 )
         );
 

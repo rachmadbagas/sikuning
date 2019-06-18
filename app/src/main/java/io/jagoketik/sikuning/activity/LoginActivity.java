@@ -1,16 +1,11 @@
-package io.jagoketik.sikuning;
+package io.jagoketik.sikuning.activity;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import io.jagoketik.sikuning.R;
+import io.jagoketik.sikuning.fragment.footerFrag;
+import io.jagoketik.sikuning.fragment.loginFragment;
 
 
 public class LoginActivity extends AppCompatActivity {

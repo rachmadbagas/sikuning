@@ -1,8 +1,6 @@
-package io.jagoketik.sikuning;
+package io.jagoketik.sikuning.fragment;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,6 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+
+import io.jagoketik.sikuning.R;
+import io.jagoketik.sikuning.activity.MainMenuActivity;
+import io.jagoketik.sikuning.activity.RegisterActivity;
 
 
 public class loginFragment extends Fragment{
@@ -26,7 +28,7 @@ public class loginFragment extends Fragment{
         daftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent as = new Intent(getActivity(),RegisterActivity.class);
+                Intent as = new Intent(getActivity(), RegisterActivity.class);
                 startActivity(as);
                 getActivity().finish();
             }
@@ -35,7 +37,7 @@ public class loginFragment extends Fragment{
         masuk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent as = new Intent(getActivity(),MainMenuActivity.class);
+                Intent as = new Intent(getActivity(), MainMenuActivity.class);
                 startActivity(as);
                 getActivity().finish();
 

@@ -1,4 +1,4 @@
-package io.jagoketik.sikuning;
+package io.jagoketik.sikuning.activity;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -6,10 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import io.jagoketik.sikuning.R;
+import io.jagoketik.sikuning.fragment.info_angkot;
+import io.jagoketik.sikuning.fragment.main_usernameFrag;
+import io.jagoketik.sikuning.order_alternate;
 
 public class MainMenuActivity extends AppCompatActivity {
 
@@ -30,7 +33,7 @@ public class MainMenuActivity extends AppCompatActivity {
         naikangkot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent as = new Intent(MainMenuActivity.this,order_alternate.class);
+                Intent as = new Intent(MainMenuActivity.this, order_alternate.class);
                 startActivity(as);
             }
         });

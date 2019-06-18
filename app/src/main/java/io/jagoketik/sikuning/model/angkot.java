@@ -1,17 +1,19 @@
 package io.jagoketik.sikuning.model;
 
 public class angkot {
-    private String jenisAngkot;
+    private String Kode;
+    private String[] trayek;
 
-    public angkot(String jenisAngkot) {
-        this.jenisAngkot = jenisAngkot;
+    public angkot(String kode, String[] trayek) {
+        Kode = kode;
+        this.trayek = trayek;
     }
 
-    public String getJenisAngkot() {
-        return jenisAngkot;
+    public String getKode() {
+        return Kode;
     }
 
-    public void setJenisAngkot(String jenisAngkot) {
-        this.jenisAngkot = jenisAngkot;
+    public String[] getTrayek() {
+        return trayek;
     }
 }

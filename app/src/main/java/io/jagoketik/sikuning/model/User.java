@@ -1,4 +1,4 @@
-package io.jagoketik.sikuning;
+package io.jagoketik.sikuning.model;
 
 import java.io.Serializable;
 

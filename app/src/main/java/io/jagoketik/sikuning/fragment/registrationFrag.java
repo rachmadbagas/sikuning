@@ -1,10 +1,7 @@
-package io.jagoketik.sikuning;
+package io.jagoketik.sikuning.fragment;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.PatternMatcher;
 import android.support.v4.app.Fragment;
 import android.util.Patterns;
 import android.view.LayoutInflater;
@@ -14,14 +11,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOError;
 import java.io.IOException;
 
+import io.jagoketik.sikuning.R;
+import io.jagoketik.sikuning.activity.LoginActivity;
 import io.jagoketik.sikuning.api.RetrofitClient;
 import okhttp3.ResponseBody;
 import retrofit2.Call;

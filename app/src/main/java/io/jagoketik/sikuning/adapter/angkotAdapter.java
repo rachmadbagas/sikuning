@@ -34,7 +34,7 @@ public class angkotAdapter extends RecyclerView.Adapter<angkotAdapter.angkotView
     @Override
     public void onBindViewHolder(@NonNull angkotViewHolder holder, int position) {
         angkot Angkot = angkots.get(position);
-        holder.kodeAngkot.setText(Angkot.getJenisAngkot());
+        holder.kodeAngkot.setText(Angkot.getKode());
     }
 
     @Override

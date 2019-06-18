@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".angkot_sekitar"
+    tools:context=".fragment.angkot_sekitar"
     android:layout_margin="10dp">
 
 
