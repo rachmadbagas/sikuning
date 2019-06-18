@@ -42,6 +42,7 @@ List<angkot> angkotList;
             public void onClick(View view) {
                 getFragmentManager().beginTransaction()
                         .remove(getFragmentManager().findFragmentById(R.id.menuPanel))
+                        .add(R.id.menuPanel,new main_usernameFrag())
                         .commit();
             }
         });
