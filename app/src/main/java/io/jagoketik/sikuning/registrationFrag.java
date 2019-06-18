@@ -4,13 +4,23 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.PatternMatcher;
 import android.support.v4.app.Fragment;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOError;
+import java.io.IOException;
 
 import io.jagoketik.sikuning.api.RetrofitClient;
 import okhttp3.ResponseBody;
@@ -42,32 +52,111 @@ public class registrationFrag extends Fragment {
         password = v.findViewById(R.id.passwordET);
         konfirmasiPass = v.findViewById(R.id.konfirmET);
 
+
         daftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Call<ResponseBody> call = RetrofitClient
-                        .getInstance()
-                        .getApi()
-                        .registeruser(name.getText().toString(),email.getText().toString(),alamat.getText().toString(),password.getText().toString(),hp.getText().toString());
-
-                call.enqueue(new Callback<ResponseBody>() {
-                    @Override
-                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                        Toast.makeText(getContext(),"Berhasil",Toast.LENGTH_SHORT).show();
-                        Intent as = new Intent(getActivity(),LoginActivity.class);
-                        startActivity(as);
-                    }
-
-                    @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {
-                        Toast.makeText(getContext(),"Gagal",Toast.LENGTH_SHORT).show();
-                    }
-                });
+                register_user();
             }
         });
+
+
         return v;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+
+    public void register_user() {
+        Boolean Error = false;
+
+        if (name.getText().toString().isEmpty()) {
+            name.setError("Nama harus diisi !!");
+            name.requestFocus();
+            Error = true;
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()) {
+            email.setError("Email harus sesuai format !!");
+            email.requestFocus();
+            Error = true;
+        }
+
+        if (alamat.getText().toString().isEmpty()) {
+            alamat.setError("Alamat harus diisi !!");
+            alamat.requestFocus();
+            Error = true;
+        }
+
+        if (hp.getText().toString().isEmpty()) {
+            hp.setError("HP harus diisi !!");
+            hp.requestFocus();
+            Error = true;
+        }
+
+        if (password.getText().toString().isEmpty()) {
+            password.setError("Password harus diisi !!");
+            password.requestFocus();
+            password.setText("");
+            Error = true;
+        }
+
+        if (!konfirmasiPass.getText().toString().equals(password.getText().toString())) {
+            konfirmasiPass.setError("Password Tidak Sama !!");
+            konfirmasiPass.requestFocus();
+            password.setText("");
+            konfirmasiPass.setText("");
+            Error = true;
+        }
+
+
+        if (!Error) {
+            Call<ResponseBody> call = RetrofitClient
+                    .getInstance()
+                    .getApi()
+                    .registeruser(name.getText().toString(), email.getText().toString(), alamat.getText().toString(), password.getText().toString(), hp.getText().toString());
+
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+                    try {
+                        String s = response.body().string();
+                        //parse json
+                        JSONObject reader = new JSONObject(s);
+                        //get message
+                        try {
+                            String msg = reader.getString("message").trim();
+                            if (!msg.equals("Error")) {
+                                Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+                                Intent as = new Intent(getActivity(), LoginActivity.class);
+                                startActivity(as);
+                            } else {
+                                try {
+                                    JSONObject sql = reader.getJSONObject("error");
+                                    msg = sql.getString("sqlMessage");
+                                    Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+                                } catch (JSONException j) {
+                                    j.printStackTrace();
+                                }
+                                Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (JSONException j) {
+                        j.printStackTrace();
+                    } catch (NullPointerException n) {
+                        n.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    Toast.makeText(getContext(), "Koneksi Ke server gagal atau terjadi kesalahan", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
 
 }
