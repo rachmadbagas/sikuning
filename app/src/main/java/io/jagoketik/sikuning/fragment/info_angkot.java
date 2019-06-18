@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
@@ -53,9 +55,14 @@ List<angkot> angkotList;
         call.enqueue(new Callback<List<angkot>>() {
             @Override
             public void onResponse(Call<List<angkot>> call, Response<List<angkot>> response) {
+                int resId = R.anim.layout_animation_fall_down;
+                LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getActivity(), resId);
+                rv.setLayoutAnimation(animation);
+
                 angkotList = response.body();
                 adapter = new angkotAdapter(getActivity(), angkotList);
                 rv.setAdapter(adapter);
+
             }
 
             @Override
