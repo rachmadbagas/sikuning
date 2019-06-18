@@ -27,7 +27,7 @@ List<angkot> angkotList;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_info_angkot, container, false);
+        View v = inflater.inflate(R.layout.fragment_info_angkot, null);
         back = v.findViewById(R.id.back_button);
 
         back.setOnClickListener(new View.OnClickListener() {

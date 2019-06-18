@@ -28,6 +28,7 @@ public class loginFragment extends Fragment{
             public void onClick(View view) {
                 Intent as = new Intent(getActivity(),RegisterActivity.class);
                 startActivity(as);
+                getActivity().finish();
             }
         });
         masuk = (Button) v.findViewById(R.id.btn_login);
@@ -36,6 +37,8 @@ public class loginFragment extends Fragment{
             public void onClick(View view) {
                 Intent as = new Intent(getActivity(),MainMenuActivity.class);
                 startActivity(as);
+                getActivity().finish();
+
             }
         });
 
