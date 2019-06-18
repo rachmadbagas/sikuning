@@ -35,6 +35,8 @@ public class angkotAdapter extends RecyclerView.Adapter<angkotAdapter.angkotView
     public void onBindViewHolder(@NonNull angkotViewHolder holder, int position) {
         angkot Angkot = angkots.get(position);
         holder.kodeAngkot.setText(Angkot.getKode());
+        holder.asal.setText(Angkot.getTrayek().get(0).toString());
+        holder.tujuan.setText(Angkot.getTrayek().get(Angkot.getTrayek().size() - 1).toString());
     }
 
     @Override
@@ -43,10 +45,13 @@ public class angkotAdapter extends RecyclerView.Adapter<angkotAdapter.angkotView
     }
 
     class angkotViewHolder extends RecyclerView.ViewHolder {
-        TextView kodeAngkot;
+        TextView kodeAngkot, asal, tujuan;
         public angkotViewHolder(View itemView) {
             super(itemView);
+
             kodeAngkot = itemView.findViewById(R.id.jenisLin);
+            asal = itemView.findViewById(R.id.asal);
+            tujuan = itemView.findViewById(R.id.tujuan);
         }
     }
 }

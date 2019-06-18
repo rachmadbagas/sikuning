@@ -14,7 +14,11 @@ import java.util.List;
 
 import io.jagoketik.sikuning.R;
 import io.jagoketik.sikuning.adapter.angkotAdapter;
+import io.jagoketik.sikuning.api.RetrofitClient;
 import io.jagoketik.sikuning.model.angkot;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class info_angkot extends Fragment {
 private ImageView back;
@@ -40,19 +44,25 @@ List<angkot> angkotList;
             }
         });
 
-        angkotList = new ArrayList<>();
+//        angkotList = new ArrayList<>();
         rv = (RecyclerView) v.findViewById(R.id.angkotItem);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        angkotList.add(
-                new angkot(
-                        "A", new String[]{"F"}
-                )
-        );
+        Call<List<angkot>> call = RetrofitClient.getInstance().getApi().getkodeangkot();
+        call.enqueue(new Callback<List<angkot>>() {
+            @Override
+            public void onResponse(Call<List<angkot>> call, Response<List<angkot>> response) {
+                angkotList = response.body();
+                adapter = new angkotAdapter(getActivity(), angkotList);
+                rv.setAdapter(adapter);
+            }
 
-        adapter = new angkotAdapter(getActivity(),angkotList);
-        rv.setAdapter(adapter);
+            @Override
+            public void onFailure(Call<List<angkot>> call, Throwable t) {
+
+            }
+        });
 
         return v;
     }

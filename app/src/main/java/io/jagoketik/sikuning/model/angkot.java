@@ -1,19 +1,27 @@
 package io.jagoketik.sikuning.model;
 
-public class angkot {
-    private String Kode;
-    private String[] trayek;
+import java.util.ArrayList;
 
-    public angkot(String kode, String[] trayek) {
-        Kode = kode;
+public class angkot {
+    private int id;
+    private String kode;
+    ArrayList<Object> trayek = new ArrayList<Object>();
+
+    public angkot(int id, String kode, ArrayList<Object> trayek) {
+        this.id = id;
+        this.kode = kode;
         this.trayek = trayek;
     }
 
-    public String getKode() {
-        return Kode;
+    public int getId() {
+        return id;
     }
 
-    public String[] getTrayek() {
+    public String getKode() {
+        return kode;
+    }
+
+    public ArrayList<Object> getTrayek() {
         return trayek;
     }
 }
