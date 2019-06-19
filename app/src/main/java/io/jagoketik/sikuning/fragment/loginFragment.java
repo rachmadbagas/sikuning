@@ -12,6 +12,7 @@ import android.widget.EditText;
 import io.jagoketik.sikuning.R;
 import io.jagoketik.sikuning.activity.MainMenuActivity;
 import io.jagoketik.sikuning.activity.RegisterActivity;
+import io.jagoketik.sikuning.activity.sideNavBar;
 
 
 public class loginFragment extends Fragment{
@@ -37,7 +38,7 @@ public class loginFragment extends Fragment{
         masuk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent as = new Intent(getActivity(), MainMenuActivity.class);
+                Intent as = new Intent(getActivity(), sideNavBar.class);
                 startActivity(as);
                 getActivity().finish();
 
