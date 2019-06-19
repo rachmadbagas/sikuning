@@ -8,7 +8,6 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import io.jagoketik.sikuning.R;
 import io.jagoketik.sikuning.fragment.info_angkot;
@@ -24,7 +23,7 @@ public class MainMenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_menu);
+        setContentView(R.layout.just_for_include);
         sewaangkot = findViewById(R.id.sewaAngkot);
         krisar = findViewById(R.id.krisar);
         keluhan = findViewById(R.id.keluhan);

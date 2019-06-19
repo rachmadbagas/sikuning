@@ -56,21 +56,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:columnCount="2"
-            android:background="@color/gorange">
+            android:background="@color/gorange"
+            android:layout_marginBottom="10dp">
 
             <TextView
                 android:layout_columnWeight="1"
                 android:fontFamily="sans-serif-black"
                 android:text="Tawang alun"
-                android:textSize="20dp"
-                android:id="@+id/asal" />
+                android:textSize="15dp"
+                android:id="@+id/asal"
+                android:background="@color/kuning"
+                android:paddingLeft="20dp"
+                android:paddingBottom="5dp"/>
 
             <TextView
                 android:layout_columnWeight="1"
                 android:fontFamily="sans-serif-black"
                 android:text="Arjasa"
-                android:textSize="20dp"
-                android:id="@+id/tujuan" />
+                android:textSize="15dp"
+                android:id="@+id/tujuan"
+                android:background="@color/kuning"
+                android:paddingLeft="20dp"
+                android:paddingBottom="5dp"
+                android:textAlignment="center"
+                />
 
 
         </GridLayout>

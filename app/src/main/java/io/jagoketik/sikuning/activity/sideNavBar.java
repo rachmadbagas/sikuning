@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -18,11 +20,12 @@ import io.jagoketik.sikuning.R;
 import io.jagoketik.sikuning.fragment.info_angkot;
 import io.jagoketik.sikuning.fragment.main_usernameFrag;
 import io.jagoketik.sikuning.order_alternate;
+import io.jagoketik.sikuning.fragment.about;
 
 public class sideNavBar extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "MainActivity";
     DrawerLayout drawerLayout;
-    NavigationView navigationView;
+    public NavigationView navigationView;
     CardView sewaangkot,krisar,keluhan;
     ImageView naikangkot,infoangkot;
     boolean doubleBackToExitPressedOnce = false;
@@ -31,8 +34,9 @@ public class sideNavBar extends AppCompatActivity implements NavigationView.OnNa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_side_nav_bar);
-        drawerLayout = findViewById(R.id.drawer);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
         navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
         sewaangkot = findViewById(R.id.sewaAngkot);
         krisar = findViewById(R.id.krisar);
@@ -72,23 +76,21 @@ public class sideNavBar extends AppCompatActivity implements NavigationView.OnNa
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         item.setChecked(true);
         switch (item.getItemId()){
-            case R.id.menu_card_view:
-                Log.d(TAG, "onNavigationItemSelected: " + item.getTitle());
+            case R.id.about:
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.menuPanel,new about())
+                        .commit();
+
                 break;
-            case R.id.menu_recycler_view:
-                Log.d(TAG, "onNavigationItemSelected: " + item.getTitle());
+            case R.id.logout:
+                Intent as = new Intent(sideNavBar.this,LoginActivity.class);
+                startActivity(as);
+                finish();
+                Toast.makeText(this,"Berhasil Logout",Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.menu_view_pager:
-                Log.d(TAG, "onNavigationItemSelected: " + item.getTitle());
-                break;
-            case R.id.menu_bottom_navigator:
-                Log.d(TAG, "onNavigationItemSelected: " + item.getTitle());
-                break;
-            case R.id.menu_bottom_sheet:
-                Log.d(TAG, "onNavigationItemSelected: " + item.getTitle());
-                break;
+
         }
-        drawerLayout.closeDrawers();
+        drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
     @Override
@@ -99,7 +101,7 @@ public class sideNavBar extends AppCompatActivity implements NavigationView.OnNa
         }
 
         this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Klik Back Lagi Untuk Keluar", Toast.LENGTH_SHORT).show();
 
         new Handler().postDelayed(new Runnable() {
 
@@ -110,4 +112,5 @@ public class sideNavBar extends AppCompatActivity implements NavigationView.OnNa
             }
         }, 2000);
     }
+
 }

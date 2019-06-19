@@ -25,7 +25,7 @@ GridLayout username;
         username.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+
             }
         });
         return v;

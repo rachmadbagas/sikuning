@@ -43,6 +43,7 @@
             android:paddingHorizontal="15dp"
             android:inputType="textPassword"/>
 
+    
         <GridLayout
             android:layout_width="match_parent"
             android:columnCount="2"
@@ -68,6 +69,7 @@
                 android:shadowRadius="5"
                 style="?android:attr/borderlessButtonStyle"
                 android:background="@drawable/btn_default"/>
+
         </GridLayout>
 
     </LinearLayout>

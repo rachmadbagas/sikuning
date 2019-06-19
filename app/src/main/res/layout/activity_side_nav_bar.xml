@@ -8,7 +8,7 @@
     android:id="@+id/drawer">
 
     <include
-        layout="@layout/activity_main_menu"
+        layout="@layout/just_for_include"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </include>

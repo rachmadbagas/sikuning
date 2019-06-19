@@ -3,134 +3,135 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/menuPanel"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainMenuActivity"
-    android:id="@+id/menuPanel">
+    tools:context=".activity.MainMenuActivity">
 
     <TextView
         android:id="@+id/bg1"
         android:layout_width="match_parent"
         android:layout_height="130dp"
-        android:background="@drawable/gradient_atas"/>
+        android:background="@drawable/gradient_atas" />
 
 
     <LinearLayout
         android:id="@+id/cv1"
         android:layout_width="match_parent"
-        android:layout_marginHorizontal="30dp"
         android:layout_height="100dp"
-        android:background="@drawable/main_menu_panel"
         android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="30dp"
         android:layout_marginTop="80dp"
-        android:orientation="vertical"
-        >
+        android:background="@drawable/main_menu_panel"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
 
+            <ImageView
+                android:id="@+id/naikAngkot"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_naik" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_naik"
-                    android:layout_weight="1"
-                    android:id="@+id/naikAngkot"/>
+            <ImageView
+                android:id="@+id/infoAngkot"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_information" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_information"
-                    android:layout_weight="1"
-                    android:id="@+id/infoAngkot"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_alert"
-                    android:layout_weight="1"
-                    android:id="@+id/minban"/>
+            <ImageView
+                android:id="@+id/minban"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_alert" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginHorizontal="5dp"
             android:layout_weight="2"
-            android:orientation="horizontal"
-            android:layout_marginHorizontal="5dp">
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_height="match_parent"
                 android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:text="NAIK ANGKOT"
-                android:layout_weight="1"
-                android:textSize="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"/>
-            <TextView
-                android:layout_height="match_parent"
-                android:layout_width="wrap_content"
-                android:gravity="center"
-                android:text="INFO ANGKOT"
-                android:layout_weight="1"
-                android:textSize="10dp"
-                android:layout_marginLeft="6dp"/>
+                android:textSize="10dp" />
 
             <TextView
-                android:layout_height="match_parent"
                 android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="6dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="INFO ANGKOT"
+                android:textSize="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="1dp"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:text="MINTA BANTUAN"
-                android:layout_weight="1"
-                android:textSize="10dp"
-                android:layout_marginHorizontal="1dp"/>
+                android:textSize="10dp" />
 
         </LinearLayout>
     </LinearLayout>
+
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragment.mainContent"
-        android:layout_marginTop="180dp">
+        android:layout_marginTop="180dp"
+        tools:context=".fragment.mainContent">
+
         <GridLayout
             android:layout_width="380dp"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="10dp"
             android:layout_marginTop="20dp"
             android:columnCount="3"
-            android:rowCount="3"
             android:paddingVertical="5dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginHorizontal="10dp">
+            android:rowCount="3">
 
             <android.support.v7.widget.CardView
+                android:id="@+id/sewaAngkot"
+                android:layout_width="wrap_content"
+                android:layout_height="90dp"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                android:layout_width= "wrap_content"
-                android:layout_height="90dp"
-                android:elevation="5dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="10dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="7.5dp"
                 android:layout_marginBottom="7.5dp"
-                android:layout_gravity="center"
-                android:id="@+id/sewaAngkot">
+                android:elevation="5dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="10dp">
 
                 <GridLayout
                     android:layout_width="match_parent"
@@ -149,7 +150,7 @@
                         android:layout_rowWeight="1"
                         android:layout_columnWeight="1"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_sewa"/>
+                        android:src="@drawable/ic_sewa" />
 
                     <TextView
                         android:layout_rowWeight="1"
@@ -159,19 +160,19 @@
 
                 </GridLayout>
             </android.support.v7.widget.CardView>
+
             <android.support.v7.widget.CardView
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
+                android:id="@+id/krisar"
                 android:layout_width="wrap_content"
                 android:layout_height="90dp"
-                android:elevation="5dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="10dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
                 android:layout_marginTop="7.5dp"
                 android:layout_marginBottom="7.5dp"
-                android:layout_gravity="center"
-                android:id="@+id/krisar"
-                >
+                android:elevation="5dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="10dp">
 
                 <GridLayout
                     android:layout_width="match_parent"
@@ -200,19 +201,19 @@
 
                 </GridLayout>
             </android.support.v7.widget.CardView>
+
             <android.support.v7.widget.CardView
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
+                android:id="@+id/keluhan"
                 android:layout_width="wrap_content"
                 android:layout_height="90dp"
-                android:elevation="5dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="10dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
                 android:layout_marginTop="7.5dp"
                 android:layout_marginBottom="7.5dp"
-                android:layout_gravity="center"
-                android:id="@+id/keluhan"
-                >
+                android:elevation="5dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="10dp">
 
                 <GridLayout
                     android:layout_width="match_parent"
