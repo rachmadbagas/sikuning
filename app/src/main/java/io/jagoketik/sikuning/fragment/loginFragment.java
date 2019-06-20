@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,8 +50,14 @@ public class loginFragment extends Fragment{
 
         SharedPreferences sharedPref = getActivity().getSharedPreferences("auth", Context.MODE_PRIVATE);
         String token = sharedPref.getString("TOKEN", "");
+        int isdriver = sharedPref.getInt("ISDRIVER", 0);
         if (!token.isEmpty()) {
-            Intent as = new Intent(getActivity(), sideNavBar.class);
+            Intent as;
+            if (isdriver == 1) {
+                as = new Intent(getActivity(), driver.class);
+            } else {
+                as = new Intent(getActivity(), sideNavBar.class);
+            }
             startActivity(as);
             getActivity().finish();
         } else {
@@ -71,50 +78,70 @@ public class loginFragment extends Fragment{
                 @Override
                 public void onClick(View view) {
 
+                    Boolean Error = false;
                     String email = emailET.getText().toString();
                     String pass = passwordET.getText().toString();
 
-                    Call<User> call = RetrofitClient
-                            .getInstance()
-                            .getApi().doLogin(email, pass);
+                    if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                        emailET.setError("Email harus sesuai format !!");
+                        emailET.requestFocus();
+                        Error = true;
+                    }
 
-                    call.enqueue(new Callback<User>() {
-                        @Override
-                        public void onResponse(Call<User> call, Response<User> response) {
-                            if (response.code() == 200) {
-                                Toast.makeText(getContext(), "selamat datang " + response.body().getUsers_name().toString(), Toast.LENGTH_SHORT).show();
+                    if (pass.isEmpty()) {
+                        passwordET.setError("Password Harus diisi !!");
+                        passwordET.requestFocus();
+                        Error = true;
+                    }
 
-                                SharedPreferences sharedPref = getActivity().getSharedPreferences("auth", Context.MODE_PRIVATE);
-                                SharedPreferences.Editor AUTH_USER = sharedPref.edit();
-                                AUTH_USER.putString("ID", response.body().getUsers_id());
-                                AUTH_USER.putString("TOKEN", response.body().getUsers_token());
-                                AUTH_USER.putString("NAME", response.body().getUsers_name());
-                                AUTH_USER.putString("ALAMAT", response.body().getUsers_alamat());
-                                AUTH_USER.putString("EMAIL", response.body().getUsers_email());
-                                AUTH_USER.putString("HP", response.body().getUsers_hp());
-                                AUTH_USER.putInt("ISDRIVER", response.body().getUsers_isdriver());
-                                AUTH_USER.putString("LAST_LOGIN", response.body().getUsers_last_login());
-                                AUTH_USER.putString("CREATED_AT", response.body().getUsers_created_at());
-                                AUTH_USER.commit();
+                    if (!Error) {
+                        Call<User> call = RetrofitClient
+                                .getInstance()
+                                .getApi().doLogin(email, pass);
 
-                                Intent as = new Intent(getActivity(), sideNavBar.class);
-                                startActivity(as);
-                                getActivity().finish();
+                        call.enqueue(new Callback<User>() {
+                            @Override
+                            public void onResponse(Call<User> call, Response<User> response) {
+                                if (response.code() == 200) {
+                                    Toast.makeText(getContext(), "selamat datang " + response.body().getUsers_name().toString(), Toast.LENGTH_SHORT).show();
 
-                            } else {
-                                Toast.makeText(getContext(), "Login Gagal , username / password salah", Toast.LENGTH_SHORT).show();
+                                    SharedPreferences sharedPref = getActivity().getSharedPreferences("auth", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor AUTH_USER = sharedPref.edit();
+                                    AUTH_USER.putString("ID", response.body().getUsers_id());
+                                    AUTH_USER.putString("TOKEN", response.body().getUsers_token());
+                                    AUTH_USER.putString("NAME", response.body().getUsers_name());
+                                    AUTH_USER.putString("ALAMAT", response.body().getUsers_alamat());
+                                    AUTH_USER.putString("EMAIL", response.body().getUsers_email());
+                                    AUTH_USER.putString("HP", response.body().getUsers_hp());
+                                    AUTH_USER.putInt("ISDRIVER", response.body().getUsers_isdriver());
+                                    AUTH_USER.putString("LAST_LOGIN", response.body().getUsers_last_login());
+                                    AUTH_USER.putString("CREATED_AT", response.body().getUsers_created_at());
+                                    AUTH_USER.commit();
+
+                                    Intent as;
+                                    if (response.body().getUsers_isdriver() == 1) {
+                                        as = new Intent(getActivity(), driver.class);
+                                    } else {
+                                        as = new Intent(getActivity(), sideNavBar.class);
+                                    }
+                                    startActivity(as);
+                                    getActivity().finish();
+
+                                } else {
+                                    Toast.makeText(getContext(), "Login Gagal , username / password salah", Toast.LENGTH_SHORT).show();
+                                }
+
+
                             }
 
 
-                        }
+                            @Override
+                            public void onFailure(Call<User> call, Throwable t) {
+                                t.getStackTrace();
+                            }
+                        });
 
-
-                        @Override
-                        public void onFailure(Call<User> call, Throwable t) {
-                            t.getStackTrace();
-                        }
-                    });
-
+                    }
 
                 }
             });

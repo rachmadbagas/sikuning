@@ -5,11 +5,12 @@
 
     <Button
         android:layout_margin="5dp"
-        android:layout_width="60dp"
+        android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:background="@drawable/btn_round_blue"
         android:layout_weight="1"
         android:text="Tw alun"
+        android:paddingHorizontal="20dp"
         android:textColor="@color/white"
         android:textSize="10dp"
         android:id="@+id/destinasi"/>

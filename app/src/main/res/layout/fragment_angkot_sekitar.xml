@@ -23,11 +23,12 @@
 
 
         <TextView
+            android:id="@+id/asaltujuan"
             android:layout_width="300dp"
             android:layout_height="match_parent"
             android:background="@drawable/destination_panel"
             android:gravity="center"
-            android:text="TWALUN - MANGLI">
+            android:text="Jurusan Sikuning">
         </TextView>
 
     </LinearLayout>
@@ -53,18 +54,20 @@
         android:layout_height="60dp">
 
         <Button
+            android:id="@+id/btnselectedangkot"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="10dp"
             android:background="@drawable/btn_round_gray"
             android:layout_gravity="center_vertical"
             android:visibility="visible"
-            android:text="A12"
             android:fontFamily="sans-serif-black"
             android:shadowColor="@android:color/background_dark"
             android:textSize="20dp"/>
 
         <Button
+            android:id="@+id/btnpanggil"
+            android:enabled="false"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_gravity="center_vertical"

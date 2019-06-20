@@ -3,6 +3,7 @@ package io.jagoketik.sikuning.api;
 import java.util.List;
 
 import io.jagoketik.sikuning.model.User;
+import io.jagoketik.sikuning.model.mobil_angkot;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.FormUrlEncoded;
@@ -33,4 +34,29 @@ public interface Api {
     @GET("/angkot/kode")
     Call<List<angkot>> getkodeangkot();
 
+    @FormUrlEncoded
+    @POST("/angkot/sekitar")
+    Call<List<mobil_angkot>> getangkot(
+            @Field("lat") String lat,
+            @Field("long") String longg
+    );
+
+    @FormUrlEncoded
+    @POST("/krisar/add")
+    Call<ResponseBody> sendkrisar(
+            @Field("uid") String uid,
+            @Field("judul") String judul,
+            @Field("pesan") String pesan
+    );
+
+    @FormUrlEncoded
+    @POST("/bantuan/add")
+    Call<ResponseBody> sendbantuan(
+            @Field("uid") String uid,
+            @Field("lat") Double lat,
+            @Field("long") Double longg
+    );
+
 }
+
+

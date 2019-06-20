@@ -17,9 +17,9 @@ import io.jagoketik.sikuning.model.destinasi_model;
 public class destinasiAdapter extends RecyclerView.Adapter<destinasiAdapter.destinasiViewHolder> {
 
     private Context mcx;
-    private List<destinasi_model> tujuanList;
+    private List<Object> tujuanList;
 
-    public destinasiAdapter(Context mcx, List<destinasi_model> tujuanList) {
+    public destinasiAdapter(Context mcx, List<Object> tujuanList) {
         this.mcx = mcx;
         this.tujuanList = tujuanList;
     }
@@ -34,8 +34,8 @@ public class destinasiAdapter extends RecyclerView.Adapter<destinasiAdapter.dest
 
     @Override
     public void onBindViewHolder(@NonNull destinasiViewHolder holder, int position) {
-        destinasi_model tujuanx = tujuanList.get(position);
-        holder.destinasi.setText(tujuanx.getTujuan());
+        Object tujuanx = tujuanList.get(position);
+        holder.destinasi.setText(tujuanx.toString());
     }
 
     @Override

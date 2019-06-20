@@ -6,25 +6,28 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
 import io.jagoketik.sikuning.R;
 import io.jagoketik.sikuning.model.angkot;
+import io.jagoketik.sikuning.model.mobil_angkot;
 import io.jagoketik.sikuning.model.nomor_lin;
 
 public class nomorAdapter extends RecyclerView.Adapter<nomorAdapter.nomorViewHolder>{
 
-    public nomorAdapter(Context mcx, List<nomor_lin> nomor) {
+    public nomorAdapter(Context mcx, List<mobil_angkot> angkot, OnItemClickListener listener) {
         this.mcx = mcx;
-        this.nomor = nomor;
+        this.angkot = angkot;
+        this.listener = listener;
     }
 
     private Context mcx;
-    private List<nomor_lin> nomor;
-
-
+    private List<mobil_angkot> angkot;
+    private OnItemClickListener listener;
 
     @NonNull
     @Override
@@ -36,14 +39,18 @@ public class nomorAdapter extends RecyclerView.Adapter<nomorAdapter.nomorViewHol
 
     @Override
     public void onBindViewHolder(@NonNull nomorViewHolder holder, int position) {
-            nomor_lin noLin = nomor.get(position);
-        holder.nomor.setText(noLin.getKode());
+        mobil_angkot angkots = angkot.get(position);
+        holder.bind(angkots, listener);
 
     }
 
     @Override
     public int getItemCount() {
-        return nomor.size();
+        return angkot.size();
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(mobil_angkot model);
     }
 
     class nomorViewHolder extends RecyclerView.ViewHolder {
@@ -51,6 +58,16 @@ public class nomorAdapter extends RecyclerView.Adapter<nomorAdapter.nomorViewHol
         public nomorViewHolder(View itemView) {
             super(itemView);
             nomor = itemView.findViewById(R.id.nomorangkot);
+        }
+
+        public void bind(final mobil_angkot model, final OnItemClickListener listener) {
+            nomor.setText(model.getKode() + model.getAngkot_nomor().toString() + "");
+            nomor.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onItemClick(model);
+                }
+            });
         }
     }
 }
