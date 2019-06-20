@@ -38,39 +38,13 @@
         android:layout_marginTop="5dp"
         android:orientation="horizontal">
 
-        <Button
-            android:layout_margin="5dp"
-            android:layout_width="wrap_content"
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/btn_round_blue"
-            android:layout_weight="1"
-            android:text="Tw alun"
-            android:textColor="@color/white"/>
+            android:id="@+id/tujuanList"
+            >
 
-        <Button
-            android:layout_margin="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@drawable/btn_round_gray"
-            android:layout_weight="1"
-            android:text="Tw alun"
-            android:textColor="@android:color/background_dark"  />
-        <Button
-            android:layout_margin="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@drawable/btn_round_gray"
-            android:layout_weight="1"
-            android:text="Tw alun"
-            android:textColor="@android:color/background_dark" />
-        <Button
-            android:layout_margin="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@drawable/btn_round_gray"
-            android:layout_weight="1"
-            android:text="Tw alun"
-            android:textColor="@android:color/background_dark" />
+        </android.support.v7.widget.RecyclerView>
 
     </LinearLayout>
     <LinearLayout
