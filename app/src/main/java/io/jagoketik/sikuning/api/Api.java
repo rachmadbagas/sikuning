@@ -2,6 +2,7 @@ package io.jagoketik.sikuning.api;
 
 import java.util.List;
 
+import io.jagoketik.sikuning.model.User;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.FormUrlEncoded;
@@ -20,6 +21,13 @@ public interface Api {
             @Field("alamat") String alamat,
             @Field("password") String password,
             @Field("hp") String hp
+    );
+
+    @FormUrlEncoded
+    @POST("/user/login")
+    Call<User> doLogin(
+            @Field("email") String email,
+            @Field("password") String password
     );
 
     @GET("/angkot/kode")

@@ -1,6 +1,8 @@
 package io.jagoketik.sikuning.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -14,6 +16,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import io.jagoketik.sikuning.R;
@@ -29,6 +32,7 @@ public class sideNavBar extends AppCompatActivity implements NavigationView.OnNa
     CardView sewaangkot,krisar,keluhan;
     ImageView naikangkot,infoangkot;
     boolean doubleBackToExitPressedOnce = false;
+    TextView nameTV, statusTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,18 @@ public class sideNavBar extends AppCompatActivity implements NavigationView.OnNa
         keluhan = findViewById(R.id.keluhan);
         naikangkot = findViewById(R.id.naikAngkot);
         infoangkot = findViewById(R.id.infoAngkot);
+
+        View header = navigationView.getHeaderView(0);
+        nameTV = (TextView) header.findViewById(R.id.dwnameTV);
+        statusTV = (TextView) header.findViewById(R.id.dwstatusTV);
+
+        SharedPreferences sharedPref = this.getSharedPreferences("auth", Context.MODE_PRIVATE);
+        String name = sharedPref.getString("NAME", "");
+        int status = sharedPref.getInt("ISDRIVER", 0);
+
+        nameTV.setText(name);
+        statusTV.setText(status == 1 ? "Driver" : "Customer");
+
 
         naikangkot.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +99,18 @@ public class sideNavBar extends AppCompatActivity implements NavigationView.OnNa
 
                 break;
             case R.id.logout:
+                SharedPreferences sharedPref = this.getSharedPreferences("auth", Context.MODE_PRIVATE);
+                SharedPreferences.Editor AUTH_USER = sharedPref.edit();
+                AUTH_USER.putString("ID", null);
+                AUTH_USER.putString("TOKEN", null);
+                AUTH_USER.putString("NAME", null);
+                AUTH_USER.putString("ALAMAT", null);
+                AUTH_USER.putString("EMAIL", null);
+                AUTH_USER.putString("HP", null);
+                AUTH_USER.putInt("ISDRIVER", 9999);
+                AUTH_USER.putString("LAST_LOGIN", null);
+                AUTH_USER.putString("CREATED_AT", null);
+                AUTH_USER.commit();
                 Intent as = new Intent(sideNavBar.this,LoginActivity.class);
                 startActivity(as);
                 finish();

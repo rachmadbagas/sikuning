@@ -26,10 +26,10 @@
             android:textSize="20dp"/>
 
         <EditText
-            android:id="@+id/usernameET"
+            android:id="@+id/emailET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="username kamu"
+            android:hint="email kamu"
             android:paddingVertical="20dp"
             android:layout_marginTop="10dp"
             android:paddingHorizontal="15dp"/>

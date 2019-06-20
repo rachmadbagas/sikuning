@@ -47,7 +47,6 @@ List<angkot> angkotList;
             }
         });
 
-//        angkotList = new ArrayList<>();
         rv = (RecyclerView) v.findViewById(R.id.angkotItem);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -63,7 +62,6 @@ List<angkot> angkotList;
                 angkotList = response.body();
                 adapter = new angkotAdapter(getActivity(), angkotList);
                 rv.setAdapter(adapter);
-
             }
 
             @Override
