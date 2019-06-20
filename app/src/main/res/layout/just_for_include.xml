@@ -172,7 +172,8 @@
                 android:layout_marginBottom="7.5dp"
                 android:elevation="5dp"
                 app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="10dp">
+                app:cardCornerRadius="10dp"
+                android:clickable="true">
 
                 <GridLayout
                     android:layout_width="match_parent"

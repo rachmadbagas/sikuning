@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.info_angkot"
+    android:id="@+id/infoangkotContainer">
+
+
+    <TextView
+        android:id="@+id/bg1"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@color/cardview_dark_background"
+        android:padding="10dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/back_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/btn_back"
+            android:clickable="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="sans-serif-light"
+            android:text="Minta Bantuan"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:textAlignment="textEnd"
+            android:layout_marginRight="20dp"
+            android:gravity="center_vertical"
+            tools:ignore="RtlCompat" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="120dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/panicBtn"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:background="@drawable/btn_panic"
+            android:text="CALL ADMIN!"
+            android:gravity="center"
+            android:fontFamily="sans-serif-black"
+            android:textSize="25dp"
+            android:textColor="@color/white"
+            android:clickable="true"/>
+
+        <TextView
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Operator kami akan menelpon anda\ndalam waktu 4-10 menit"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

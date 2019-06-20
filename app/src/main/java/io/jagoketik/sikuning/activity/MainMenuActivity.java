@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import io.jagoketik.sikuning.R;
 import io.jagoketik.sikuning.fragment.info_angkot;
+import io.jagoketik.sikuning.fragment.kritik_saran;
 import io.jagoketik.sikuning.fragment.main_usernameFrag;
 import io.jagoketik.sikuning.order_alternate;
 
@@ -29,6 +30,15 @@ public class MainMenuActivity extends AppCompatActivity {
         keluhan = findViewById(R.id.keluhan);
         naikangkot = findViewById(R.id.naikAngkot);
         infoangkot = findViewById(R.id.infoAngkot);
+
+        krisar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.menuPanel,new kritik_saran())
+                        .commit();
+            }
+        });
 
         naikangkot.setOnClickListener(new View.OnClickListener() {
             @Override

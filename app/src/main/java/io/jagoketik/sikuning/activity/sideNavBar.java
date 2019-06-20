@@ -21,7 +21,9 @@ import android.widget.Toast;
 
 import io.jagoketik.sikuning.R;
 import io.jagoketik.sikuning.fragment.info_angkot;
+import io.jagoketik.sikuning.fragment.kritik_saran;
 import io.jagoketik.sikuning.fragment.main_usernameFrag;
+import io.jagoketik.sikuning.fragment.minta_bantuan;
 import io.jagoketik.sikuning.order_alternate;
 import io.jagoketik.sikuning.fragment.about;
 
@@ -30,7 +32,7 @@ public class sideNavBar extends AppCompatActivity implements NavigationView.OnNa
     DrawerLayout drawerLayout;
     public NavigationView navigationView;
     CardView sewaangkot,krisar,keluhan;
-    ImageView naikangkot,infoangkot;
+    ImageView naikangkot,infoangkot,minban;
     boolean doubleBackToExitPressedOnce = false;
     TextView nameTV, statusTV;
 
@@ -47,6 +49,7 @@ public class sideNavBar extends AppCompatActivity implements NavigationView.OnNa
         keluhan = findViewById(R.id.keluhan);
         naikangkot = findViewById(R.id.naikAngkot);
         infoangkot = findViewById(R.id.infoAngkot);
+        minban = findViewById(R.id.minban);
 
         View header = navigationView.getHeaderView(0);
         nameTV = (TextView) header.findViewById(R.id.dwnameTV);
@@ -59,6 +62,23 @@ public class sideNavBar extends AppCompatActivity implements NavigationView.OnNa
         nameTV.setText(name);
         statusTV.setText(status == 1 ? "Driver" : "Customer");
 
+        krisar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.menuPanel,new kritik_saran())
+                        .commit();
+            }
+        });
+
+        minban.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.menuPanel,new minta_bantuan())
+                        .commit();
+            }
+        });
 
         naikangkot.setOnClickListener(new View.OnClickListener() {
             @Override
