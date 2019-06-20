@@ -43,13 +43,23 @@
             android:paddingHorizontal="15dp"
             android:inputType="textPassword"/>
 
-    
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="8dp"
+            android:text="driver?"
+            android:textColor="@color/blue_button"
+            android:clickable="true"
+            android:id="@+id/driver"/>
+
+
         <GridLayout
             android:layout_width="match_parent"
             android:columnCount="2"
             android:rowCount="1"
             android:layout_height="match_parent"
-            android:layout_marginTop="40dp">
+            android:layout_marginTop="10dp">
 
             <Button
                 android:id="@+id/btn_regis"

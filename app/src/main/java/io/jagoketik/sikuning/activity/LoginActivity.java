@@ -1,7 +1,9 @@
 package io.jagoketik.sikuning.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import io.jagoketik.sikuning.R;
 import io.jagoketik.sikuning.fragment.footerFrag;
@@ -22,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
+
 
 
 }

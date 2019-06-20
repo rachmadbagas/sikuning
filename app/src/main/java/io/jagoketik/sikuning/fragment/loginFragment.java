@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import io.jagoketik.sikuning.R;
@@ -17,6 +18,7 @@ import io.jagoketik.sikuning.activity.MainMenuActivity;
 import io.jagoketik.sikuning.activity.RegisterActivity;
 import io.jagoketik.sikuning.activity.sideNavBar;
 import io.jagoketik.sikuning.api.RetrofitClient;
+import io.jagoketik.sikuning.activity.driver;
 import io.jagoketik.sikuning.model.User;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,6 +28,7 @@ import retrofit2.Response;
 public class loginFragment extends Fragment{
     private Button daftar, masuk;
     private EditText emailET, passwordET;
+    private TextView driver;
 
 
     @Override
@@ -33,6 +36,17 @@ public class loginFragment extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_login, container, false);
+        driver = v.findViewById(R.id.driver);
+
+        driver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent as = new Intent(getActivity(),driver.class);
+                startActivity(as);
+            }
+        });
+
+
         SharedPreferences sharedPref = getActivity().getSharedPreferences("auth", Context.MODE_PRIVATE);
         String token = sharedPref.getString("TOKEN", "");
         if (!token.isEmpty()) {
