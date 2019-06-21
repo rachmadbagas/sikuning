@@ -1,9 +1,11 @@
 package io.jagoketik.sikuning;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -18,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
@@ -43,7 +46,7 @@ import retrofit2.Response;
 
 public class order_alternate extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
 
-    private GoogleMap mMap;
+    public GoogleMap mMap;
     GoogleApiClient mGoogleApiClient;
     Location mLastLocation;
     LocationRequest mLocationRequest;
@@ -79,28 +82,6 @@ public class order_alternate extends FragmentActivity implements OnMapReadyCallb
 
         double longitude = location.getLongitude();
         double latitude = location.getLatitude();
-
-        Call<List<mobil_angkot>> call = RetrofitClient.getInstance().getApi().getangkot(latitude + "", longitude + "");
-        call.enqueue(new Callback<List<mobil_angkot>>() {
-            @Override
-            public void onResponse(Call<List<mobil_angkot>> call, Response<List<mobil_angkot>> response) {
-                Iterator<mobil_angkot> it = response.body().iterator();
-                while (it.hasNext()) {
-                    double a = -8.1771862;
-                    double b = 113.7186184;
-                    mobil_angkot item = it.next();
-                    a = (double) item.getAngkot_lat() * 1;
-                    b = (double) item.getAngkot_long() * 1;
-//                    Toast.makeText(getBaseContext(), a + " - " + b , Toast.LENGTH_LONG).show();
-                    mMap.addMarker(new MarkerOptions().position(new LatLng(a, b)).title(item.getKode() + item.getAngkot_nomor() + " " + item.getAngkot_plat_nomor()));
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<mobil_angkot>> call, Throwable t) {
-
-            }
-        });
     }
 
     protected synchronized void buildGoogleApiClient() {
@@ -115,8 +96,8 @@ public class order_alternate extends FragmentActivity implements OnMapReadyCallb
     @Override
     public void onConnected(@Nullable Bundle bundle) {
         mLocationRequest = new LocationRequest();
-        mLocationRequest.setInterval(500);
-        mLocationRequest.setFastestInterval(500);
+        mLocationRequest.setInterval(1000);
+        mLocationRequest.setFastestInterval(1000);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -138,44 +119,38 @@ public class order_alternate extends FragmentActivity implements OnMapReadyCallb
     @Override
     public void onLocationChanged(Location location) {
         mLastLocation = location;
+        mMap.clear();
 
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
 //        Toast.makeText(this.getBaseContext(), location.getLatitude() +" , "+ location.getLongitude(), Toast.LENGTH_SHORT).show();
 
 //        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
-//        mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
+        Call<List<mobil_angkot>> call = RetrofitClient.getInstance().getApi().getangkot(location.getLatitude() + "", location.getLongitude() + "");
+        call.enqueue(new Callback<List<mobil_angkot>>() {
+            @Override
+            public void onResponse(Call<List<mobil_angkot>> call, Response<List<mobil_angkot>> response) {
+                Iterator<mobil_angkot> it = response.body().iterator();
+                while (it.hasNext()) {
+                    double a = -8.1771862;
+                    double b = 113.7186184;
+                    mobil_angkot item = it.next();
+                    a = (double) item.getAngkot_lat() * 1;
+                    b = (double) item.getAngkot_long() * 1;
+//                    Toast.makeText(getBaseContext(), a + " - " + b , Toast.LENGTH_LONG).show();
+                    mMap.addMarker(new MarkerOptions().position(new LatLng(a, b)).title(item.getKode() + item.getAngkot_nomor() + " " + item.getAngkot_plat_nomor()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<mobil_angkot>> call, Throwable t) {
+
+            }
+        });
 
 
     }
 
-//    private void findNearByPlaces(){
-//        double currentLat = mLastLocation.getLatitude();
-//        double currentLng = mLastLocation.getLongitude();
-
-//        List<LocationModel> nearByLocationList = new ArrayList<LocationModel>();
-//        for(int i =0 ; i< GetLocation.size(); i++ ){
-//            if(isInRange(currentLat,currentLng,GetLocation.getlat(),
-//                    GetLocation.getLong())){
-//                nearByLocationList.add(GetLocation.get(i));
-//            }
-//        }
-//
-//        showDataOnMap(nearByLocationList);
-//    }
-
-//    private boolean isInRange(long currentLat, long currentlongi,long databaseLat, long databaselongi)
-//    {
-//        Location loc1 = new Location(currentLat,currentlongi); loc1.setLatitude(lat1);
-//        loc1.setLongitude(lon1);
-//        Location loc2 = new Location(databaseLat, databaselongi); loc2.setLatitude(lat2);
-//        loc2.setLongitude(lon2);
-//        float distanceInMeters = loc1.distanceTo(loc2);
-//        if(distanceInMeters <= 50)// your given range
-//            return true;
-//        else
-//            return false;
-//    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

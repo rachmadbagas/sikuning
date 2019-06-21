@@ -1,6 +1,7 @@
 package io.jagoketik.sikuning.fragment;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ import io.jagoketik.sikuning.adapter.nomorAdapter;
 import io.jagoketik.sikuning.api.RetrofitClient;
 import io.jagoketik.sikuning.model.destinasi_model;
 import io.jagoketik.sikuning.model.mobil_angkot;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,7 +42,7 @@ public class angkot_sekitar extends Fragment {
     List<Object> destinasiList;
     List<mobil_angkot> nomor;
     Button btnslangkot, btnpanggil;
-
+    mobil_angkot selected;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,10 +57,11 @@ public class angkot_sekitar extends Fragment {
         destinasi.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL,false));
         destinasiList = new ArrayList<Object>();
 
+
         LocationManager lm = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
         Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        double longitude = location.getLongitude();
-        double latitude = location.getLatitude();
+        final double longitude = location.getLongitude();
+        final double latitude = location.getLatitude();
 
         rv = (RecyclerView) v.findViewById(R.id.angkotsekitar);
         rv.setHasFixedSize(true);
@@ -84,6 +87,7 @@ public class angkot_sekitar extends Fragment {
                         btnslangkot.setText(model.getKode() + "" + model.getAngkot_nomor());
                         btnpanggil.setEnabled(true);
                         destinasi.setAdapter(tujuanAdapter);
+                        selected = model;
                     }
                 });
                 rv.setAdapter(adapter);
@@ -96,8 +100,33 @@ public class angkot_sekitar extends Fragment {
         });
 
 
+        btnpanggil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences sharedPref = getActivity().getSharedPreferences("auth", Context.MODE_PRIVATE);
+                final String uid = sharedPref.getString("ID", "");
+                Call<ResponseBody> call = RetrofitClient.getInstance().getApi().sendorder(uid, selected.getAngkot_id(), latitude, longitude);
+                call.enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        if (response.code() == 200) {
+                            Toast.makeText(getContext(), "Berhasil Melakukan Pemanggilan Angkot " + selected.getKode() + selected.getAngkot_nomor().toString() + "", Toast.LENGTH_LONG).show();
+                            btnpanggil.setText("Menunggu ..");
+                            btnpanggil.setEnabled(false);
+                            rv.setEnabled(false);
+                        } else {
+                            Toast.makeText(getContext(), "Pemanggilan Angkot " + selected.getKode() + selected.getAngkot_nomor().toString() + " gagal", Toast.LENGTH_LONG).show();
+                        }
+                    }
 
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
 
+                    }
+                });
+//                Toast.makeText(getContext(), selected.getUsers_name() , Toast.LENGTH_LONG).show();
+            }
+        });
         return v;
     }
 

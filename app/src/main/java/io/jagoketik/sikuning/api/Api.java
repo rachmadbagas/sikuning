@@ -57,6 +57,17 @@ public interface Api {
             @Field("long") Double longg
     );
 
+    @FormUrlEncoded
+    @POST("/order/add")
+    Call<ResponseBody> sendorder(
+            @Field("uid") String uid,
+            @Field("angkotid") String angkotid,
+            @Field("lat") Double lat,
+            @Field("long") Double longg
+    );
+
+
+
 }
 
 
