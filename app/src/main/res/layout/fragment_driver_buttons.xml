@@ -59,11 +59,26 @@
             android:background="@drawable/btn_round_blue"
             android:fontFamily="sans-serif-black"
             android:textSize="20dp"
-            android:text="Pulang"
+            android:text="Balik Arah"
             android:textColor="@color/white"
             android:textStyle="italic"
-            android:visibility="visible" />
+            android:visibility="visible"
+            android:layout_weight="0.5"/>
 
+        <Button
+            android:id="@+id/logout"
+            android:layout_marginTop="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/btn_round_gray"
+            android:fontFamily="sans-serif-black"
+            android:textSize="15dp"
+            android:text="logout"
+            android:textColor="@color/blue_button"
+            android:textStyle="italic"
+            android:visibility="visible"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"/>
     </LinearLayout>
 
 

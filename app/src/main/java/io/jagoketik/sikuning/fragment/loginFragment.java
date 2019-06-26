@@ -29,7 +29,6 @@ import retrofit2.Response;
 public class loginFragment extends Fragment{
     private Button daftar, masuk;
     private EditText emailET, passwordET;
-    private TextView driver;
 
 
     @Override
@@ -37,16 +36,6 @@ public class loginFragment extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_login, container, false);
-        driver = v.findViewById(R.id.driver);
-
-        driver.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent as = new Intent(getActivity(),driver.class);
-                startActivity(as);
-            }
-        });
-
 
         SharedPreferences sharedPref = getActivity().getSharedPreferences("auth", Context.MODE_PRIVATE);
         String token = sharedPref.getString("TOKEN", "");
